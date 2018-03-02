@@ -1,0 +1,37 @@
+{
+  "name": "import-localytics-logs",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Almaju/import-localytics-logs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Almaju/import-localytics-logs/issues"
+  },
+  "homepage": "https://github.com/Almaju/import-localytics-logs#readme",
+  "dependencies": {
+    "@babel/runtime": "^7.0.0-beta.36",
+    "glob": "^7.1.2",
+    "gunzip-file": "^0.1.1",
+    "ls-archive": "^1.2.3",
+    "mongodb": "^3.0.2",
+    "read-file": "^0.2.0"
+  },
+  "devDependencies": {
+    "@meteorjs/eslint-config-meteor": "^1.0.5",
+    "babel-eslint": "^8.2.2",
+    "eslint": "^4.18.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-meteor": "^4.2.0"
+  }
+}
