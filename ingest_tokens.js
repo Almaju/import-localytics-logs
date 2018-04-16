@@ -1,35 +1,32 @@
-import { Tokens } from './collections';
-
 const glob = require('glob');
-const archive = require('ls-archive');
 const gunzip = require('gunzip-file');
 const read = require('read-file');
 
-export default () => {
-  const recurse = (file) => {
-    console.log(file);
-    file.recurse = file.pattern.glob.indexOf('**') !== -1;
-    return file;
-  }
+export default (db) => {
+  const tokens = db.collection("tokens");
 
-  glob('tests/**/*.gz', function(err, files) {
+  glob('logs/**/*.gz', function(err, files) {
     files.map((file) => {
       let extractedFile = file.replace('.gz', '');
 
-      gunzip(file, extractedFile, () => {
-          read(extractedFile, 'utf8', function(err, buffer) {
-            let content = buffer.split("\n");
-            content.map((c) => {
-              try{
-                let json = JSON.parse(c);
-                console.log(json);
-                Tokens.upsert(json);
-              }
-              catch(e){}
-            })
-          });
-           
-      });
+      gunzip(file, extractedFile);
+
+      // gunzip(file, extractedFile, () => {
+      //     read(extractedFile, 'utf8', function(err, buffer) {
+      //       console.log(extractedFile);
+      //       let content = buffer.split("\n");
+      //       content.map((c) => {
+      //         if(c)
+      //           try{
+      //             let data = JSON.parse(c);
+      //             tokens.update({'device_uuid': data.device_uuid}, data, {upsert: true});
+      //           }
+      //           catch(e){
+      //             console.log(typeof c, JSON.stringify(c), e);
+      //           }
+      //       })
+      //     });
+      // });
     })
   });
 };
